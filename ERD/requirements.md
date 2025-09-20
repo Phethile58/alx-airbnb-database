@@ -1,132 +1,63 @@
-📌 Entity–Relationship (ER) Diagram Specification
-1. Entities and Attributes
-
-User
-
-user_id (PK)
-
-first_name
-
-last_name
-
-email
-
-phone
-
-password_hash
-
-role
-
-created_at
-
-Property
-
-property_id (PK)
-
-host_id (FK → User.user_id)
-
-title
-
-description
-
-address
-
-city
-
-country
-
-price_per_night
-
-property_type
-
-created_at
-
-Booking
-
-booking_id (PK)
-
-user_id (FK → User.user_id)
-
-property_id (FK → Property.property_id)
-
-start_date
-
-end_date
-
-status
-
-total_price
-
-created_at
-
-Payment
-
-payment_id (PK)
-
-booking_id (FK → Booking.booking_id)
-
-amount
-
-method
-
-status
-
-transaction_date
-
-Review
-
-review_id (PK)
-
-booking_id (FK → Booking.booking_id)
-
-user_id (FK → User.user_id)
-
-rating
-
-comment
-
-created_at
-
-Message
-
-message_id (PK)
-
-sender_id (FK → User.user_id)
-
-receiver_id (FK → User.user_id)
-
-booking_id (FK → Booking.booking_id, optional)
-
-content
-
-sent_at
-
-status
-
-Index
-
-index_id (PK)
-
-property_id (FK → Property.property_id)
-
-created_at
-
-last_updated
-
-Relationships
-
-User → Property: One user (host) can list many properties.
-
-User → Booking: One user (guest) can make many bookings.
-
-Property → Booking: One property can have many bookings.
-
-Booking → Payment: One booking has exactly one payment.
-
-Booking → Review: One booking can have one review.
-
-User → Message: A user can send and receive many messages.
-
-Booking → Message: A booking may have many messages (optional).
-
-Property → Index: One property appears once in the index.
+# ERD Requirements for Airbnb Database
+
+## Entities and Attributes
+
+### 1. User
+- user_id (PK)
+- name
+- email (unique)
+- password
+- created_at
+- updated_at
+
+### 2. Property
+- property_id (PK)
+- owner_id (FK → User.user_id)
+- title
+- description
+- location
+- price_per_night
+- created_at
+
+### 3. Booking
+- booking_id (PK)
+- user_id (FK → User.user_id)
+- property_id (FK → Property.property_id)
+- start_date
+- end_date
+- total_amount
+- status
+
+### 4. Payment
+- payment_id (PK)
+- booking_id (FK → Booking.booking_id)
+- amount
+- payment_date
+- payment_method
+- status
+
+### 5. Review
+- review_id (PK)
+- user_id (FK → User.user_id)
+- property_id (FK → Property.property_id)
+- rating
+- comment
+- created_at
+
+---
+
+## Relationships
+
+- **User → Property**: One user (host) can own many properties.  
+- **User → Booking**: One user (guest) can make many bookings.  
+- **Property → Booking**: One property can have many bookings.  
+- **Booking → Payment**: One booking can have one or more payments.  
+- **User → Review**: One user can leave many reviews.  
+- **Property → Review**: One property can have many reviews.  
+
+---
+
+## ERD Diagram
+The visual ER diagram will be created using **Draw.io** and exported as:
+- `ERD/ERD.drawio` (editable file)  
+- `ERD/ERD.png` (image for documentation)
