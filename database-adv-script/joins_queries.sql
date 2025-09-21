@@ -9,6 +9,7 @@ SELECT
     u.email
 FROM Booking b
 INNER JOIN User u ON b.user_id = u.id;
+ORDER BY b.id;
 
 -- LEFT JOIN: Retrieve all properties with their reviews (including properties without reviews)
 SELECT 
@@ -19,7 +20,7 @@ SELECT
     r.comment
 FROM Property p
 LEFT JOIN Review r ON p.id = r.property_id;
-
+ORDER BY p.id, r.id;
 -- FULL OUTER JOIN: Retrieve all users and all bookings
 -- NOTE: MySQL does not support FULL OUTER JOIN directly.
 -- We simulate it using UNION of LEFT JOIN and RIGHT JOIN.
@@ -44,3 +45,4 @@ SELECT
     b.end_date
 FROM User u
 RIGHT JOIN Booking b ON u.id = b.user_id;
+ORDER BY u.id, b.id;
