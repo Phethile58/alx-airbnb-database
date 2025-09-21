@@ -56,3 +56,26 @@ This directory contains SQL scripts that demonstrate the use of both **correlate
 ## Learning Objectives
 - Understand the difference between correlated and non-correlated subqueries.
 - Learn how to use subqueries for filtering and aggregation in relational databases.
+
+# SQL Aggregations and Window Functions
+
+This directory contains SQL scripts that demonstrate the use of **aggregation functions** and **window functions** in the Airbnb database project.
+
+## Files
+- **aggregations_and_window_functions.sql**: Contains the SQL queries
+- **README.md**: Documentation
+
+## Queries
+
+1. **Total Number of Bookings per User (Aggregation)**
+   - Uses `COUNT` and `GROUP BY` to calculate how many bookings each user has made.
+   - Includes users even if they have zero bookings (via LEFT JOIN).
+
+2. **Rank Properties by Total Bookings (Window Function)**
+   - Uses `RANK()` as a window function to assign a rank to each property based on its total bookings.
+   - Properties with the same number of bookings will share the same rank.
+
+## Learning Objectives
+- Apply `COUNT` and `GROUP BY` for aggregations.
+- Use window functions (`ROW_NUMBER`, `RANK`) to perform advanced analytics.
+- Differentiate between aggregation and windowing operations.
