@@ -1,9 +1,3 @@
-SELECT p.id, p.title, r.id, r.rating, r.comment
-FROM Property p
-LEFT JOIN Review r ON p.id = r.property_id;
-SELECT p.id, p.title, r.id, r.rating, r.comment
-FROM Property p
-LEFT JOIN Review r ON p.id = r.property_id;
 # Advanced SQL Joins – Airbnb Database
 
 ## Objective
