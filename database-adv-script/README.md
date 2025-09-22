@@ -10,66 +10,6 @@ The goal of this task is to **master SQL joins** by writing complex queries usin
 ### 1. INNER JOIN
 Retrieve all bookings and the respective users who made those bookings.
 ```sql
-
 SELECT b.id, b.property_id, b.start_date, b.end_date, u.id, u.name, u.email
 FROM Booking b
 INNER JOIN User u ON b.user_id = u.id;
-SELECT p.id, p.title, r.id, r.rating, r.comment
-FROM Property p
-LEFT JOIN Review r ON p.id = r.property_id;
-ORDER BY p.id, r.id;
-
--- MySQL simulation using UNION
-SELECT u.id, u.name, b.id, b.property_id, b.start_date, b.end_date
-FROM User u
-LEFT JOIN Booking b ON u.id = b.user_id
-UNION
-SELECT u.id, u.name, b.id, b.property_id, b.start_date, b.end_date
-FROM User u
-RIGHT JOIN Booking b ON u.id = b.user_id;
-ORDER BY u.id, b.id;
-
-# Advanced SQL: Subqueries
-
-This directory contains SQL scripts that demonstrate the use of both **correlated** and **non-correlated** subqueries in the Airbnb database project.
-
-## Files
-- **subqueries.sql**: Contains the SQL queries
-- **README.md**: Documentation
-
-## Queries
-
-1. **Properties with Avg Rating > 4.0 (Non-correlated Subquery)**
-   - Uses a subquery with `GROUP BY` and `HAVING` to filter properties based on reviews.
-   - Ensures only properties with an average rating above 4.0 are retrieved.
-
-2. **Users with More Than 3 Bookings (Correlated Subquery)**
-   - Uses a correlated subquery with `COUNT(*)` to count bookings per user.
-   - Returns only users who have made more than 3 bookings.
-
-## Learning Objectives
-- Understand the difference between correlated and non-correlated subqueries.
-- Learn how to use subqueries for filtering and aggregation in relational databases.
-
-# SQL Aggregations and Window Functions
-
-This directory contains SQL scripts that demonstrate the use of **aggregation functions** and **window functions** in the Airbnb database project.
-
-## Files
-- **aggregations_and_window_functions.sql**: Contains the SQL queries
-- **README.md**: Documentation
-
-## Queries
-
-1. **Total Number of Bookings per User (Aggregation)**
-   - Uses `COUNT` and `GROUP BY` to calculate how many bookings each user has made.
-   - Includes users even if they have zero bookings (via LEFT JOIN).
-
-2. **Rank Properties by Total Bookings (Window Function)**
-   - Uses `RANK()` as a window function to assign a rank to each property based on its total bookings.
-   - Properties with the same number of bookings will share the same rank.
-
-## Learning Objectives
-- Apply `COUNT` and `GROUP BY` for aggregations.
-- Use window functions (`ROW_NUMBER`, `RANK`) to perform advanced analytics.
-- Differentiate between aggregation and windowing operations.
