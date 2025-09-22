@@ -1,3 +1,23 @@
+# Advanced SQL: Subqueries – Airbnb Database
+
+## Objective
+The goal of this task is to **practice both correlated and non-correlated subqueries** for advanced SQL querying.
+
+---
+
+## Queries Implemented
+
+### 1. Non-Correlated Subquery
+Find all properties where the average rating is greater than 4.0.
+```sql
+SELECT p.id, p.title
+FROM Property p
+WHERE p.id IN (
+    SELECT r.property_id
+    FROM Review r
+    GROUP BY r.property_id
+    HAVING AVG(r.rating) > 4.0
+);
 # Advanced SQL Joins – Airbnb Database
 
 ## Objective
