@@ -33,3 +33,21 @@ Retrieve all bookings and the respective users who made those bookings.
 SELECT b.id, b.property_id, b.start_date, b.end_date, u.id, u.name, u.email
 FROM Booking b
 INNER JOIN User u ON b.user_id = u.id;
+# SQL Aggregations and Window Functions – Airbnb Database
+
+## Objective
+The goal of this task is to **analyze data using aggregation and window functions** in SQL.
+
+---
+
+## Queries Implemented
+
+### 1. Total Number of Bookings per User (Aggregation)
+This query uses `COUNT` and `GROUP BY` to calculate the number of bookings made by each user.
+
+```sql
+SELECT u.id, u.name, COUNT(b.id) AS total_bookings
+FROM User u
+LEFT JOIN Booking b ON u.id = b.user_id
+GROUP BY u.id, u.name
+ORDER BY total_bookings DESC;
