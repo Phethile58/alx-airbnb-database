@@ -14,3 +14,19 @@ CREATE INDEX idx_property_title ON Property(title);
 
 -- Index on Property.location (if queries often filter by location)
 CREATE INDEX idx_property_location ON Property(location);
+---------------------------------------------------------
+-- Performance Testing
+---------------------------------------------------------
+
+-- Before adding indexes, run EXPLAIN ANALYZE like this:
+
+EXPLAIN ANALYZE
+SELECT b.id, u.name, p.title
+FROM Booking b
+JOIN User u ON b.user_id = u.id
+JOIN Property p ON b.property_id = p.id
+WHERE u.email = 'test@example.com';
+
+-- After adding indexes, run the same EXPLAIN ANALYZE query
+-- to observe the improved performance.
+EOF
